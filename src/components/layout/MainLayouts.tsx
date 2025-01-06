@@ -1,33 +1,28 @@
-import {
-  UploadOutlined,
-  UserOutlined,
-  VideoCameraOutlined,
-} from "@ant-design/icons";
 import { Layout, Menu, MenuProps } from "antd";
-import React from "react";
+import { NavLink, Outlet } from "react-router-dom";
 
 const { Header, Content, Footer, Sider } = Layout;
 
 const items: MenuProps["items"] = [
   {
-    key: "01",
-    label: "Dashboard",
+    key: "dashboard",
+    label: <NavLink to="/admin/dashboard">Dashboard</NavLink>,
   },
   {
-    key: "02",
-    label: "Profile",
-  },
-  {
-    key: "03",
+    key: "user-management",
     label: "Management",
     children: [
       {
-        key: "03-01",
-        label: "create-user",
+        key: "create-admin",
+        label: <NavLink to="/admin/create-admin">create-admin</NavLink>,
       },
       {
-        key: "03-02",
-        label: "create-admin",
+        key: "create-faculty",
+        label: <NavLink to="/admin/create-faculty">create-faculty</NavLink>,
+      },
+      {
+        key: "create-student",
+        label: <NavLink to="/admin/create-student">create-student</NavLink>,
       },
     ],
   },
@@ -73,7 +68,7 @@ const MainLayouts = () => {
               minHeight: 360,
             }}
           >
-            <h1>main content this here</h1>
+            <Outlet />
           </div>
         </Content>
         <Footer style={{ textAlign: "center" }}>
